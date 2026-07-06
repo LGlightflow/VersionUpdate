@@ -1,17 +1,17 @@
-﻿// Copyright Epic Games, Inc. All Rights Reserved.
-
+﻿using System.IO;
 using UnrealBuildTool;
 
-public class VersionUpdate : ModuleRules
+public class VersionManifest : ModuleRules
 {
-	public VersionUpdate(ReadOnlyTargetRules Target) : base(Target)
+    public VersionManifest(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		bool bUseHotPatcherPakApi = true;
-		PublicDefinitions.Add("VERSIONUPDATE_USE_HOTPATCHER_PAK=" + (bUseHotPatcherPakApi ? "1" : "0"));
-		
-		PublicIncludePaths.AddRange(
+      //  bUsePrecompiled = true;
+
+      //  PrecompileForTargets = PrecompileTargetsType.Any;
+
+        PublicIncludePaths.AddRange(
 			new string[] {
 				// ... add public include paths required here ...
 			}
@@ -28,31 +28,17 @@ public class VersionUpdate : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-                "Core",
-                "HTTP",
-                "UnHTTP",
-                "VersionPak",
-                "VersionManifest",
-                "VersionInstallation"
+				"Core",
+				"Json"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
-
-		if (bUseHotPatcherPakApi)
-		{
-			PublicDependencyModuleNames.Add("HotPatcherRuntime");
-		}
 			
 		
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"CoreUObject",
-				"Engine",
-                "Slate",
-                "SlateCore",
-                "Json",
-                "EngineSettings"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
@@ -64,5 +50,5 @@ public class VersionUpdate : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
-	}
+    }
 }

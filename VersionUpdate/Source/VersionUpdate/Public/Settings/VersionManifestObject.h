@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "Version/CtrlVersion.h"
+#include "Version/PatchManifest.h"
 #include "VersionManifestObject.generated.h"
 
 /**

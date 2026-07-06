@@ -20,4 +20,5 @@ enum class EServerVersionResponseType :uint8
 	MAJORVERSION_UPDATE			UMETA(DisplayName = "MajorVersion Update"),
 	VERSION_EQUAL					UMETA(DisplayName = "Version Equal"),
 	CONNECTION_ERROR		UMETA(DisplayName = "Connection Error"),
+	INITIALIZATION_ERROR UMETA(DisplayName = "Initialization Error"),
 };

@@ -4,7 +4,7 @@
 #include "VersionPak.h"
 #include "IPlatformFilePak.h"
 #include "VersionPakMethod.hpp"
-#include "Log/VersionPakLog.h"
+#include "VersionPakLogChannels.h"
 #include "Blueprint/UserWidget.h"
 
 FVersionPakConfig HotPakConfig;

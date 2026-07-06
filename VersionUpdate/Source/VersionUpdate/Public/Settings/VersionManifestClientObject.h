@@ -1,9 +1,8 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Version/CtrlVersion.h"
+#include "Version/PatchManifest.h"
 #include "VersionManifestClientObject.generated.h"
 
 
@@ -23,6 +22,7 @@ struct VERSIONUPDATE_API FClientVersionFilesList
 
 namespace VersionClientJson {
 	VERSIONUPDATE_API bool Save(const FClientVersionFilesList& Info, FString& OutJson);
+	VERSIONUPDATE_API bool SaveToFile(const FClientVersionFilesList& Info, const FString& FilePath);
 	VERSIONUPDATE_API bool Read(const FString& Json, FClientVersionFilesList& OutInfo);
 };
 
@@ -41,16 +41,16 @@ public:
 
 	//Json Url
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Version")
-	FString ServerJsonURL = "http://127.0.0.1:81/PatchList.json";
+	FString ServerJsonURL = "http://192.168.6.142:80/PatchList.json";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Version")
-	bool bSeamlessHotUpdate = false;
+	bool bSeamlessHotUpdate = true;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Version")
 	bool bSynchronous = true;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Version")
-	FString ClientJsonSavePath = CtrlVerClientJsonRelativePath;
+	FString ClientJsonSavePath = ClientVersionJsonRelativePath;
 
 };
 

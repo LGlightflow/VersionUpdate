@@ -3,7 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "VersionPakType.h"
-#include "Log/VersionPakLog.h"
+#include "VersionPakLogChannels.h"
 
 namespace VersionPak
 {
@@ -19,7 +19,7 @@ namespace VersionPak
 			TEXT("'") + Filename + TEXT(".") + FPaths::GetCleanFilename(Filename) +
 			(Suffix == NULL ? TEXT("") : Suffix)+ TEXT("'");
 
-		UE_LOG(VersionPakLog, Log, TEXT("StaticLoadPakObject>>ObjectName = %s"), *ObjectName);
+		UE_LOG(LogVersionPak, Log, TEXT("StaticLoadPakObject>>ObjectName = %s"), *ObjectName);
 
 		return Cast<T>(StaticLoadObject(T::StaticClass(), nullptr, *ObjectName));;
 	}

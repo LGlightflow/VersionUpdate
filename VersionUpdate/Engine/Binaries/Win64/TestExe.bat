@@ -1,2 +1,2 @@
-VersionInstallationProgress.exe -bTest=true -log
+VersionInstallationProcessor.exe -bTest=true -log
 pause

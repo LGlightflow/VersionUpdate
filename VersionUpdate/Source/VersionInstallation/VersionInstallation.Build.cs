@@ -26,7 +26,7 @@ public class VersionInstallation : ModuleRules
 			new string[]
 			{
 				"Core",
-				"VersionObject"
+				"VersionManifest"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

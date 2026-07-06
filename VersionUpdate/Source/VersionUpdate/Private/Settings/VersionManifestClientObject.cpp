@@ -1,12 +1,10 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "Settings/VersionManifestClientObject.h"
 
 #include "Json.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
-#include "Version/CtrlVersion.h"
+#include "Version/PatchManifest.h"
 
 namespace VersionClientJson
 {
@@ -23,7 +21,7 @@ namespace VersionClientJson
 		Writer->WriteArrayStart(TEXT("installedPatchFiles"));
 		for (const FRemotePatchFile& File : Info.InstalledPatchFiles)
 		{
-			VersionControl::WritePatchFile(Writer, File);
+			PatchManifest::WritePatchFile(Writer, File);
 		}
 		Writer->WriteArrayEnd();
 
@@ -31,6 +29,18 @@ namespace VersionClientJson
 		Writer->Close();
 
 		return true;
+	}
+
+	bool SaveToFile(const FClientVersionFilesList& Info, const FString& FilePath)
+	{
+		FString Json;
+		if (!Save(Info, Json))
+		{
+			return false;
+		}
+
+		IFileManager::Get().MakeDirectory(*FPaths::GetPath(FilePath), true);
+		return FFileHelper::SaveStringToFile(Json, *FilePath);
 	}
 
 	bool Read(const FString& Json, FClientVersionFilesList& OutInfo)
@@ -54,7 +64,7 @@ namespace VersionClientJson
 			for (const auto& FileValue : *Files)
 			{
 				FRemotePatchFile File;
-				VersionControl::ReadPatchFile(FileValue->AsObject(), File);
+				PatchManifest::ReadPatchFile(FileValue->AsObject(), File);
 				OutInfo.InstalledPatchFiles.Add(MoveTemp(File));
 			}
 		}

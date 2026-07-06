@@ -14,6 +14,12 @@
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "UnHTTP",
+			"Enabled": true
+		}
+	],
 	"Modules": [
 		{
 			"Name": "VersionUpdate",
@@ -32,7 +38,7 @@
 			]
 		},
 		{
-			"Name": "VersionObject",
+			"Name": "VersionManifest",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
@@ -48,12 +54,12 @@
 			]
 		},
 		{
-		"Name": "VersionUpdateEditor",
-		"Type": "Editor",
-		"LoadingPhase": "Default",
-		"WhitelistPlatforms": [
-			"Win64"
-		]
-},
+			"Name": "VersionUpdateEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		}
 	]
 }

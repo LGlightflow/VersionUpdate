@@ -35,10 +35,9 @@ public class VersionUpdateEditor : ModuleRules
 				// ... add other private include paths required here ...
 			});
 
-		PublicDefinitions.Add("UE5_ENIGNE");//如果是UE5引擎 需要打开此选项，如果是UE4就把它注掉
+		PublicDefinitions.Add("UE5_ENIGNE");
 		if (PublicDefinitions.Contains("UE5_ENIGNE"))
         {
-			//如果使用UE4版本，请把它注掉，如果用UE5 请打开它 目前没办法进行只能操作 通过手动方式实现
 			PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
@@ -61,7 +60,7 @@ public class VersionUpdateEditor : ModuleRules
 				"Settings",
 				"PropertyEditor",
 				"VersionUpdate",
-				"VersionObject",
+				"VersionManifest",
 				"VersionPak",
 				"AssetRegistry",
 				"PakFileUtilities"
